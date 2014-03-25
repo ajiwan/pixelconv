@@ -1,0 +1,330 @@
+# Reading C:/modeltech64_10.1c/tcl/vsim/pref.tcl 
+# //  ModelSim SE-64 10.1c Jul 28 2012 
+# //
+# //  Copyright 1991-2012 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# do {tb.fdo} 
+# ** Warning: (vlib-34) Library already exists at "work".
+# 
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module load_bram
+# 
+# Top level modules:
+# 	load_bram
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module PXBRAM
+# 
+# Top level modules:
+# 	PXBRAM
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module tb
+# 
+# Top level modules:
+# 	tb
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module PXBRAM
+# 
+# Top level modules:
+# 	PXBRAM
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module glbl
+# 
+# Top level modules:
+# 	glbl
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -L secureip -lib work -voptargs=\"+acc\" -t 1ps work.tb glbl 
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# 
+# ** Error: tb.v(65): (vopt-2135) Too many port connections. Expected 12, found 16.
+# 
+# Optimization failed
+# Error loading design
+# Error: Error loading design 
+#        Pausing macro execution 
+# MACRO ./tb.fdo PAUSED at line 31
+vlog -reportprogress 300 -work work C:/fpga/ISE/pxconv/pxconv.v
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module load_bram
+# 
+# Top level modules:
+# 	load_bram
+vlog -reportprogress 300 -work work C:/fpga/ISE/pxconv/tb.v
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module tb
+# 
+# Top level modules:
+# 	tb
+# Load canceled
+do wave.do
+vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -L secureip -lib work -voptargs=\"+acc\" -t ns -novopt work.load_bram work.PXBRAM work.tb
+# vsim -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -L secureip -lib work -voptargs=\"+acc\" -t ns -novopt work.load_bram work.PXBRAM work.tb 
+# Refreshing C:/fpga/ISE/pxconv/work.load_bram
+# Loading work.load_bram
+# Refreshing C:/fpga/ISE/pxconv/work.PXBRAM
+# Loading work.PXBRAM
+# Refreshing C:/fpga/ISE/pxconv/work.tb
+# Loading work.tb
+add wave  \
+sim:/load_bram/clk \
+sim:/load_bram/rst \
+sim:/load_bram/axi_to_pxconv_data \
+sim:/load_bram/axi_to_pxconv_valid \
+sim:/load_bram/pixel_ack \
+sim:/load_bram/pxconv_to_axi_ready_to_rd \
+sim:/load_bram/pxconv_to_axi_mst_length \
+sim:/load_bram/pxconv_to_bram_we \
+sim:/load_bram/pxconv_to_bram_data \
+sim:/load_bram/pxconv_to_bram_wr_en \
+sim:/load_bram/pxconv_to_bram_addr \
+sim:/load_bram/wnd_in_bram \
+sim:/load_bram/px_low_red \
+sim:/load_bram/px_low_blue \
+sim:/load_bram/px_low_green \
+sim:/load_bram/px_hi_red \
+sim:/load_bram/px_hi_blue \
+sim:/load_bram/px_hi_green \
+sim:/load_bram/px_low_grey \
+sim:/load_bram/px_hi_grey \
+sim:/load_bram/px_cnt \
+sim:/load_bram/ack_cnt \
+sim:/load_bram/axi_to_pxconv_data_d \
+sim:/load_bram/axi_to_pxconv_data_dd \
+sim:/load_bram/axi_to_pxconv_valid_d \
+sim:/load_bram/axi_to_pxconv_valid_dd \
+sim:/load_bram/pxconv_write_data_sel
+add wave  \
+sim:/tb/clk \
+sim:/tb/rst \
+sim:/tb/axi_to_pxconv_data \
+sim:/tb/axi_to_pxconv_valid \
+sim:/tb/pixel_ack \
+sim:/tb/pxconv_to_axi_ready_to_rd \
+sim:/tb/pxconv_to_axi_mst_length \
+sim:/tb/pxconv_to_bram_low_we \
+sim:/tb/pxconv_to_bram_low_data \
+sim:/tb/pxconv_to_bram_low_wr_en \
+sim:/tb/pxconv_to_bram_low_addr \
+sim:/tb/pxconv_to_bram_hi_we \
+sim:/tb/pxconv_to_bram_hi_data \
+sim:/tb/pxconv_to_bram_hi_wr_en \
+sim:/tb/pxconv_to_bram_hi_addr \
+sim:/tb/wnd_in_bram
+write format wave -window .main_pane.wave.interior.cs.body.pw.wf C:/fpga/ISE/pxconv/wave.do
+restart -f
+run 30us
+vlog -reportprogress 300 -work work C:/fpga/ISE/pxconv/pxconv.v
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module load_bram
+# 
+# Top level modules:
+# 	load_bram
+restart -f
+# Refreshing C:/fpga/ISE/pxconv/work.load_bram
+# Loading work.load_bram
+run 60us
+vlog -reportprogress 300 -work work C:/fpga/ISE/pxconv/pxconv.v
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module load_bram
+# 
+# Top level modules:
+# 	load_bram
+restart -f
+# Refreshing C:/fpga/ISE/pxconv/work.load_bram
+# Loading work.load_bram
+run 60us
+vlog -reportprogress 300 -work work C:/fpga/ISE/pxconv/pxconv.v
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module load_bram
+# 
+# Top level modules:
+# 	load_bram
+vlog -reportprogress 300 -work work C:/fpga/ISE/pxconv/tb.v
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module tb
+# 
+# Top level modules:
+# 	tb
+restart -f
+# Refreshing C:/fpga/ISE/pxconv/work.load_bram
+# Loading work.load_bram
+# Refreshing C:/fpga/ISE/pxconv/work.tb
+# Loading work.tb
+run 60us
+vlog -reportprogress 300 -work work C:/fpga/ISE/pxconv/pxconv.v
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module load_bram
+# 
+# Top level modules:
+# 	load_bram
+vlog -reportprogress 300 -work work C:/fpga/ISE/pxconv/tb.v
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module tb
+# 
+# Top level modules:
+# 	tb
+add wave  \
+sim:/tb/clk \
+sim:/tb/rst \
+sim:/tb/axi_to_pxconv_data \
+sim:/tb/axi_to_pxconv_valid \
+sim:/tb/pixel_ack \
+sim:/tb/pxconv_to_axi_ready_to_rd \
+sim:/tb/pxconv_to_axi_mst_length \
+sim:/tb/pxconv_to_bram_low_we \
+sim:/tb/pxconv_to_bram_low_data \
+sim:/tb/pxconv_to_bram_low_wr_en \
+sim:/tb/pxconv_to_bram_low_addr \
+sim:/tb/pxconv_to_bram_hi_we \
+sim:/tb/pxconv_to_bram_hi_data \
+sim:/tb/pxconv_to_bram_hi_wr_en \
+sim:/tb/pxconv_to_bram_hi_addr \
+sim:/tb/wnd_in_bram
+restart -f
+# Refreshing C:/fpga/ISE/pxconv/work.load_bram
+# Loading work.load_bram
+# Refreshing C:/fpga/ISE/pxconv/work.tb
+# Loading work.tb
+run 60us
+vlog -reportprogress 300 -work work C:/fpga/ISE/pxconv/tb.v
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module tb
+# 
+# Top level modules:
+# 	tb
+vlog -reportprogress 300 -work work C:/fpga/ISE/pxconv/pxconv.v
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module load_bram
+# 
+# Top level modules:
+# 	load_bram
+restart -f
+# Refreshing C:/fpga/ISE/pxconv/work.load_bram
+# Loading work.load_bram
+# Refreshing C:/fpga/ISE/pxconv/work.tb
+# Loading work.tb
+run 60us
+vlog -reportprogress 300 -work work C:/fpga/ISE/pxconv/pxconv.v
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module load_bram
+# 
+# Top level modules:
+# 	load_bram
+restart -f
+# Refreshing C:/fpga/ISE/pxconv/work.load_bram
+# Loading work.load_bram
+run 60us
+vlog -reportprogress 300 -work work C:/fpga/ISE/pxconv/pxconv.v
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module load_bram
+# 
+# Top level modules:
+# 	load_bram
+restart -f
+# Refreshing C:/fpga/ISE/pxconv/work.load_bram
+# Loading work.load_bram
+run 60us
+vlog -reportprogress 300 -work work C:/fpga/ISE/pxconv/pxconv.v
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module load_bram
+# 
+# Top level modules:
+# 	load_bram
+restart -f
+# Refreshing C:/fpga/ISE/pxconv/work.load_bram
+# Loading work.load_bram
+run 60us
+vlog -reportprogress 300 -work work C:/fpga/ISE/pxconv/pxconv.v
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module load_bram
+# 
+# Top level modules:
+# 	load_bram
+restart -f
+# Refreshing C:/fpga/ISE/pxconv/work.load_bram
+# Loading work.load_bram
+run 60us
+vlog -reportprogress 300 -work work C:/fpga/ISE/pxconv/pxconv.v
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module load_bram
+# 
+# Top level modules:
+# 	load_bram
+vlog -reportprogress 300 -work work C:/fpga/ISE/pxconv/pxconv.v
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module load_bram
+# 
+# Top level modules:
+# 	load_bram
+restart -f
+# Refreshing C:/fpga/ISE/pxconv/work.load_bram
+# Loading work.load_bram
+run 60us
+vlog -reportprogress 300 -work work C:/fpga/ISE/pxconv/pxconv.v
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module load_bram
+# 
+# Top level modules:
+# 	load_bram
+vlog -reportprogress 300 -work work C:/fpga/ISE/pxconv/tb.v
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module tb
+# 
+# Top level modules:
+# 	tb
+restart -f
+# Refreshing C:/fpga/ISE/pxconv/work.load_bram
+# Loading work.load_bram
+# Refreshing C:/fpga/ISE/pxconv/work.tb
+# Loading work.tb
+run 60us
+vlog -reportprogress 300 -work work C:/fpga/ISE/pxconv/pxconv.v
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module load_bram
+# 
+# Top level modules:
+# 	load_bram
+restart -f
+# Refreshing C:/fpga/ISE/pxconv/work.load_bram
+# Loading work.load_bram
+run 60us
+vlog -reportprogress 300 -work work C:/fpga/ISE/pxconv/tb.v
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module tb
+# 
+# Top level modules:
+# 	tb
+restart -f
+# Refreshing C:/fpga/ISE/pxconv/work.tb
+# Loading work.tb
+run 60us
+run -all
+restart -f
+run -all
+vlog -reportprogress 300 -work work C:/fpga/ISE/pxconv/pxconv.v
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module load_bram
+# 
+# Top level modules:
+# 	load_bram
+vlog -reportprogress 300 -work work C:/fpga/ISE/pxconv/tb.v
+# Model Technology ModelSim SE-64 vlog 10.1c Compiler 2012.07 Jul 27 2012
+# -- Compiling module tb
+# 
+# Top level modules:
+# 	tb
+restart -f
+# Refreshing C:/fpga/ISE/pxconv/work.load_bram
+# Loading work.load_bram
+# Refreshing C:/fpga/ISE/pxconv/work.tb
+# Loading work.tb
+run 1s
+# Invalid time value: 1s
+run 1000us
+restart -f
+run 10000us
+restart -f
+run 1000000us

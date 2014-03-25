@@ -1,0 +1,22 @@
+library verilog;
+use verilog.vl_types.all;
+entity load_bram is
+    port(
+        clk             : in     vl_logic;
+        rst             : in     vl_logic;
+        axi_to_pxconv_data: in     vl_logic_vector(31 downto 0);
+        axi_to_pxconv_valid: in     vl_logic;
+        pixel_ack       : in     vl_logic;
+        pxconv_to_axi_ready_to_rd: out    vl_logic;
+        pxconv_to_axi_mst_length: out    vl_logic_vector(11 downto 0);
+        pxconv_to_bram_low_we: out    vl_logic_vector(3 downto 0);
+        pxconv_to_bram_low_data: out    vl_logic_vector(31 downto 0);
+        pxconv_to_bram_low_wr_en: out    vl_logic;
+        pxconv_to_bram_low_addr: out    vl_logic_vector(31 downto 0);
+        pxconv_to_bram_hi_we: out    vl_logic_vector(3 downto 0);
+        pxconv_to_bram_hi_data: out    vl_logic_vector(31 downto 0);
+        pxconv_to_bram_hi_wr_en: out    vl_logic;
+        pxconv_to_bram_hi_addr: out    vl_logic_vector(31 downto 0);
+        wnd_in_bram     : out    vl_logic
+    );
+end load_bram;
