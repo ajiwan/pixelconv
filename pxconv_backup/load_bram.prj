@@ -1,0 +1,2 @@
+verilog work "pxconv.v"
+verilog work "ipcore_dir/PXBRAM_synth.v"

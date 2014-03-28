@@ -3,14 +3,14 @@ Copyright (c) 1995-2012 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.33 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.43 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.33 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.43 secs
  
 --> Reading design: load_bram.prj
 
@@ -109,533 +109,126 @@ Cores Search Directories           : {"ipcore_dir"  }
 *                          HDL Parsing                                  *
 =========================================================================
 Analyzing Verilog file "C:\fpga\ISE\pxconv\pxconv.v" into library work
-Parsing module <load_bram>.
-Analyzing Verilog file "C:\fpga\ISE\pxconv\ipcore_dir\PXBRAM_synth.v" into library work
+Parsing module <pxconv>.
+Analyzing Verilog file "C:\fpga\ISE\pxconv\ipcore_dir\PXBRAM.v" into library work
 Parsing module <PXBRAM>.
-
-=========================================================================
-*                            HDL Elaboration                            *
-=========================================================================
-
-Elaborating module <load_bram>.
-WARNING:HDLCompiler:413 - "C:\fpga\ISE\pxconv\pxconv.v" Line 77: Result of 25-bit expression is truncated to fit in 24-bit target.
-WARNING:HDLCompiler:413 - "C:\fpga\ISE\pxconv\pxconv.v" Line 87: Result of 25-bit expression is truncated to fit in 24-bit target.
-WARNING:HDLCompiler:413 - "C:\fpga\ISE\pxconv\pxconv.v" Line 131: Result of 25-bit expression is truncated to fit in 24-bit target.
-
-=========================================================================
-*                           HDL Synthesis                               *
-=========================================================================
-
-Synthesizing Unit <load_bram>.
-    Related source file is "C:\fpga\ISE\pxconv\pxconv.v".
-    Register <pxconv_to_bram_hi_wr_en> equivalent to <pxconv_to_bram_low_wr_en> has been removed
-    Found 32-bit register for signal <pxconv_to_bram_low_addr>.
-    Found 1-bit register for signal <pxconv_to_bram_low_wr_en>.
-    Found 32-bit register for signal <pxconv_to_bram_hi_data>.
-    Found 32-bit register for signal <pxconv_to_bram_hi_addr>.
-    Found 24-bit register for signal <px_cnt>.
-    Found 24-bit register for signal <wnd_cnt>.
-    Found 32-bit register for signal <axi_to_pxconv_data_d>.
-    Found 1-bit register for signal <axi_to_pxconv_valid_d>.
-    Found 12-bit register for signal <pxconv_to_axi_mst_length>.
-    Found 1-bit register for signal <pxconv_to_axi_ready_to_rd>.
-    Found 24-bit register for signal <ack_cnt>.
-    Found 1-bit register for signal <wnd_in_bram>.
-    Found 32-bit register for signal <pxconv_to_bram_low_data>.
-    Found 17-bit adder for signal <n0131[16:0]> created at line 43.
-    Found 18-bit adder for signal <n0118> created at line 43.
-    Found 17-bit adder for signal <n0137[16:0]> created at line 49.
-    Found 18-bit adder for signal <n0123> created at line 49.
-    Found 24-bit adder for signal <px_cnt[23]_GND_1_o_add_16_OUT> created at line 77.
-    Found 24-bit adder for signal <wnd_cnt[23]_GND_1_o_add_20_OUT> created at line 87.
-    Found 32-bit adder for signal <pxconv_to_bram_low_addr[31]_GND_1_o_add_24_OUT> created at line 94.
-    Found 32-bit adder for signal <pxconv_to_bram_hi_addr[31]_GND_1_o_add_25_OUT> created at line 95.
-    Found 24-bit adder for signal <ack_cnt[23]_GND_1_o_add_52_OUT> created at line 131.
-    Found 24-bit comparator greater for signal <px_cnt[23]_GND_1_o_LessThan_47_o> created at line 110
-    Found 24-bit comparator greater for signal <px_cnt[23]_GND_1_o_LessThan_52_o> created at line 125
-    Summary:
-	inferred   9 Adder/Subtractor(s).
-	inferred 248 D-type flip-flop(s).
-	inferred   2 Comparator(s).
-Unit <load_bram> synthesized.
-
-Synthesizing Unit <div_18u_2u>.
-    Related source file is "".
-    Found 20-bit adder for signal <n0847> created at line 0.
-    Found 20-bit adder for signal <GND_2_o_b[1]_add_1_OUT> created at line 0.
-    Found 19-bit adder for signal <n0851> created at line 0.
-    Found 19-bit adder for signal <GND_2_o_b[1]_add_3_OUT> created at line 0.
-    Found 18-bit adder for signal <n0855> created at line 0.
-    Found 18-bit adder for signal <a[17]_b[1]_add_5_OUT> created at line 0.
-    Found 18-bit adder for signal <n0859> created at line 0.
-    Found 18-bit adder for signal <a[17]_GND_2_o_add_7_OUT> created at line 0.
-    Found 18-bit adder for signal <n0863> created at line 0.
-    Found 18-bit adder for signal <a[17]_GND_2_o_add_9_OUT> created at line 0.
-    Found 18-bit adder for signal <n0867> created at line 0.
-    Found 18-bit adder for signal <a[17]_GND_2_o_add_11_OUT> created at line 0.
-    Found 18-bit adder for signal <n0871> created at line 0.
-    Found 18-bit adder for signal <a[17]_GND_2_o_add_13_OUT> created at line 0.
-    Found 18-bit adder for signal <n0875> created at line 0.
-    Found 18-bit adder for signal <a[17]_GND_2_o_add_15_OUT> created at line 0.
-    Found 18-bit adder for signal <n0879> created at line 0.
-    Found 18-bit adder for signal <a[17]_GND_2_o_add_17_OUT> created at line 0.
-    Found 18-bit adder for signal <n0883> created at line 0.
-    Found 18-bit adder for signal <a[17]_GND_2_o_add_19_OUT> created at line 0.
-    Found 18-bit adder for signal <n0887> created at line 0.
-    Found 18-bit adder for signal <a[17]_GND_2_o_add_21_OUT> created at line 0.
-    Found 18-bit adder for signal <n0891> created at line 0.
-    Found 18-bit adder for signal <a[17]_GND_2_o_add_23_OUT> created at line 0.
-    Found 18-bit adder for signal <n0895> created at line 0.
-    Found 18-bit adder for signal <a[17]_GND_2_o_add_25_OUT> created at line 0.
-    Found 18-bit adder for signal <n0899> created at line 0.
-    Found 18-bit adder for signal <a[17]_GND_2_o_add_27_OUT> created at line 0.
-    Found 18-bit adder for signal <n0903> created at line 0.
-    Found 18-bit adder for signal <a[17]_GND_2_o_add_29_OUT> created at line 0.
-    Found 18-bit adder for signal <n0907> created at line 0.
-    Found 18-bit adder for signal <a[17]_GND_2_o_add_31_OUT[17:0]> created at line 0.
-    Found 18-bit adder for signal <n0911> created at line 0.
-    Found 18-bit adder for signal <a[17]_GND_2_o_add_33_OUT[17:0]> created at line 0.
-    Found 18-bit adder for signal <n0915> created at line 0.
-    Found 18-bit adder for signal <a[17]_GND_2_o_add_35_OUT[17:0]> created at line 0.
-    Found 20-bit comparator lessequal for signal <BUS_0001> created at line 0
-    Found 19-bit comparator lessequal for signal <BUS_0002> created at line 0
-    Found 18-bit comparator lessequal for signal <BUS_0003> created at line 0
-    Found 18-bit comparator lessequal for signal <BUS_0004> created at line 0
-    Found 18-bit comparator lessequal for signal <BUS_0005> created at line 0
-    Found 18-bit comparator lessequal for signal <BUS_0006> created at line 0
-    Found 18-bit comparator lessequal for signal <BUS_0007> created at line 0
-    Found 18-bit comparator lessequal for signal <BUS_0008> created at line 0
-    Found 18-bit comparator lessequal for signal <BUS_0009> created at line 0
-    Found 18-bit comparator lessequal for signal <BUS_0010> created at line 0
-    Found 18-bit comparator lessequal for signal <BUS_0011> created at line 0
-    Found 18-bit comparator lessequal for signal <BUS_0012> created at line 0
-    Found 18-bit comparator lessequal for signal <BUS_0013> created at line 0
-    Found 18-bit comparator lessequal for signal <BUS_0014> created at line 0
-    Found 18-bit comparator lessequal for signal <BUS_0015> created at line 0
-    Found 18-bit comparator lessequal for signal <BUS_0016> created at line 0
-    Found 18-bit comparator lessequal for signal <BUS_0017> created at line 0
-    Found 18-bit comparator lessequal for signal <BUS_0018> created at line 0
-    Found 18-bit comparator lessequal for signal <BUS_0019> created at line 0
-    Summary:
-	inferred  36 Adder/Subtractor(s).
-	inferred  19 Comparator(s).
-	inferred 273 Multiplexer(s).
-Unit <div_18u_2u> synthesized.
-
-=========================================================================
-HDL Synthesis Report
-
-Macro Statistics
-# Adders/Subtractors                                   : 81
- 17-bit adder                                          : 2
- 18-bit adder                                          : 66
- 19-bit adder                                          : 4
- 20-bit adder                                          : 4
- 24-bit adder                                          : 3
- 32-bit adder                                          : 2
-# Registers                                            : 13
- 1-bit register                                        : 4
- 12-bit register                                       : 1
- 24-bit register                                       : 3
- 32-bit register                                       : 5
-# Comparators                                          : 40
- 18-bit comparator lessequal                           : 34
- 19-bit comparator lessequal                           : 2
- 20-bit comparator lessequal                           : 2
- 24-bit comparator greater                             : 2
-# Multiplexers                                         : 546
- 1-bit 2-to-1 multiplexer                              : 540
- 18-bit 2-to-1 multiplexer                             : 6
-
-=========================================================================
-
-=========================================================================
-*                       Advanced HDL Synthesis                          *
-=========================================================================
-
-WARNING:Xst:1710 - FF/Latch <pxconv_to_bram_low_data_21> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_low_data_22> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_low_data_23> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_low_data_24> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_low_data_25> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_low_data_26> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_low_data_27> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_low_data_28> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_low_data_29> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_low_data_30> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_low_data_31> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_axi_mst_length_0> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_axi_mst_length_1> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_axi_mst_length_2> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_axi_mst_length_3> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_axi_mst_length_5> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_axi_mst_length_6> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_axi_mst_length_8> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_axi_mst_length_9> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_axi_mst_length_10> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_axi_mst_length_11> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_hi_data_16> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_hi_data_17> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_hi_data_18> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_hi_data_19> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_hi_data_20> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_hi_data_21> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_hi_data_22> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_hi_data_23> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_hi_data_24> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_hi_data_25> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_hi_data_26> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_hi_data_27> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_hi_data_28> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_hi_data_29> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_hi_data_30> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_hi_data_31> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_low_data_16> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_low_data_17> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_low_data_18> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_low_data_19> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_low_data_20> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:2404 -  FFs/Latches <pxconv_to_bram_hi_data<31:16>> (without init value) have a constant value of 0 in block <load_bram>.
-WARNING:Xst:2404 -  FFs/Latches <pxconv_to_bram_low_data<31:16>> (without init value) have a constant value of 0 in block <load_bram>.
-
-Synthesizing (advanced) Unit <load_bram>.
-The following registers are absorbed into accumulator <pxconv_to_bram_low_addr>: 1 register on signal <pxconv_to_bram_low_addr>.
-The following registers are absorbed into accumulator <pxconv_to_bram_hi_addr>: 1 register on signal <pxconv_to_bram_hi_addr>.
-The following registers are absorbed into counter <px_cnt>: 1 register on signal <px_cnt>.
-The following registers are absorbed into counter <wnd_cnt>: 1 register on signal <wnd_cnt>.
-The following registers are absorbed into counter <ack_cnt>: 1 register on signal <ack_cnt>.
-Unit <load_bram> synthesized (advanced).
-
-=========================================================================
-Advanced HDL Synthesis Report
-
-Macro Statistics
-# Adders/Subtractors                                   : 40
- 17-bit adder                                          : 2
- 18-bit adder                                          : 2
- 18-bit adder carry in                                 : 36
-# Counters                                             : 3
- 24-bit up counter                                     : 3
-# Accumulators                                         : 2
- 32-bit up accumulator                                 : 2
-# Registers                                            : 80
- Flip-Flops                                            : 80
-# Comparators                                          : 40
- 18-bit comparator lessequal                           : 34
- 19-bit comparator lessequal                           : 2
- 20-bit comparator lessequal                           : 2
- 24-bit comparator greater                             : 2
-# Multiplexers                                         : 546
- 1-bit 2-to-1 multiplexer                              : 540
- 18-bit 2-to-1 multiplexer                             : 6
-
-=========================================================================
-
-=========================================================================
-*                         Low Level Synthesis                           *
-=========================================================================
-WARNING:Xst:1710 - FF/Latch <pxconv_to_axi_mst_length_0> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_axi_mst_length_1> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_axi_mst_length_2> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_axi_mst_length_3> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_axi_mst_length_5> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_axi_mst_length_6> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_axi_mst_length_8> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_axi_mst_length_9> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_axi_mst_length_10> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_axi_mst_length_11> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <pxconv_to_bram_hi_data_9> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_hi_data_10> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_hi_data_11> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_hi_data_12> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_hi_data_13> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_hi_data_14> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_hi_data_15> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_low_data_9> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_low_data_10> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_low_data_11> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_low_data_12> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_low_data_13> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_low_data_14> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_low_data_15> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_low_addr_0> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-
-Optimizing unit <load_bram> ...
-WARNING:Xst:1710 - FF/Latch <pxconv_to_bram_hi_data_8> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <pxconv_to_bram_low_data_8> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1710 - FF/Latch <ack_cnt_23> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ack_cnt_22> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ack_cnt_20> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ack_cnt_19> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ack_cnt_21> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ack_cnt_17> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ack_cnt_16> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ack_cnt_18> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ack_cnt_14> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ack_cnt_13> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ack_cnt_15> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ack_cnt_11> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ack_cnt_10> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ack_cnt_12> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ack_cnt_8> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ack_cnt_7> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ack_cnt_9> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ack_cnt_5> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <ack_cnt_6> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <wnd_cnt_23> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <wnd_cnt_21> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <wnd_cnt_20> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <wnd_cnt_22> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <wnd_cnt_18> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <wnd_cnt_17> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <wnd_cnt_19> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <wnd_cnt_15> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <wnd_cnt_14> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <wnd_cnt_16> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <wnd_cnt_12> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1895 - Due to other FF/Latch trimming, FF/Latch <wnd_cnt_13> (without init value) has a constant value of 0 in block <load_bram>. This FF/Latch will be trimmed during the optimization process.
-INFO:Xst:2261 - The FF/Latch <pxconv_to_bram_low_addr_1> in Unit <load_bram> is equivalent to the following FF/Latch, which will be removed : <pxconv_to_bram_hi_addr_1> 
-INFO:Xst:2261 - The FF/Latch <pxconv_to_bram_low_addr_2> in Unit <load_bram> is equivalent to the following FF/Latch, which will be removed : <pxconv_to_bram_hi_addr_2> 
-INFO:Xst:2261 - The FF/Latch <pxconv_to_bram_low_addr_3> in Unit <load_bram> is equivalent to the following FF/Latch, which will be removed : <pxconv_to_bram_hi_addr_3> 
-INFO:Xst:2261 - The FF/Latch <pxconv_to_bram_low_addr_4> in Unit <load_bram> is equivalent to the following FF/Latch, which will be removed : <pxconv_to_bram_hi_addr_4> 
-INFO:Xst:2261 - The FF/Latch <pxconv_to_bram_low_addr_5> in Unit <load_bram> is equivalent to the following FF/Latch, which will be removed : <pxconv_to_bram_hi_addr_5> 
-INFO:Xst:2261 - The FF/Latch <pxconv_to_bram_low_addr_6> in Unit <load_bram> is equivalent to the following FF/Latch, which will be removed : <pxconv_to_bram_hi_addr_6> 
-INFO:Xst:3203 - The FF/Latch <pxconv_to_axi_mst_length_4> in Unit <load_bram> is the opposite to the following FF/Latch, which will be removed : <pxconv_to_axi_mst_length_7> 
-
-Mapping all equations...
-Building and optimizing final netlist ...
-Found area constraint ratio of 100 (+ 5) on block load_bram, actual ratio is 2.
-
-Final Macro Processing ...
-
-=========================================================================
-Final Register Report
-
-Macro Statistics
-# Registers                                            : 151
- Flip-Flops                                            : 151
-
-=========================================================================
-
-=========================================================================
-*                           Partition Report                            *
-=========================================================================
-
-Partition Implementation Status
--------------------------------
-
-  No Partitions were found in this design.
-
--------------------------------
-
-=========================================================================
-*                            Design Summary                             *
-=========================================================================
-
-Top Level Output File Name         : load_bram.ngc
-
-Primitive and Black Box Usage:
-------------------------------
-# BELS                             : 1262
-#      GND                         : 1
-#      INV                         : 7
-#      LUT1                        : 100
-#      LUT2                        : 17
-#      LUT3                        : 47
-#      LUT4                        : 15
-#      LUT5                        : 88
-#      LUT6                        : 440
-#      MUXCY                       : 260
-#      MUXF7                       : 17
-#      VCC                         : 1
-#      XORCY                       : 269
-# FlipFlops/Latches                : 151
-#      FDE                         : 33
-#      FDR                         : 20
-#      FDRE                        : 95
-#      FDSE                        : 3
-# Clock Buffers                    : 1
-#      BUFGP                       : 1
-# IO Buffers                       : 187
-#      IBUF                        : 35
-#      OBUF                        : 152
-
-Device utilization summary:
----------------------------
-
-Selected Device : 6slx45csg324-3 
-
-
-Slice Logic Utilization: 
- Number of Slice Registers:             151  out of  54576     0%  
- Number of Slice LUTs:                  714  out of  27288     2%  
-    Number used as Logic:               714  out of  27288     2%  
-
-Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    743
-   Number with an unused Flip Flop:     592  out of    743    79%  
-   Number with an unused LUT:            29  out of    743     3%  
-   Number of fully used LUT-FF pairs:   122  out of    743    16%  
-   Number of unique control sets:         7
-
-IO Utilization: 
- Number of IOs:                         188
- Number of bonded IOBs:                 188  out of    218    86%  
-
-Specific Feature Utilization:
- Number of BUFG/BUFGCTRLs:                1  out of     16     6%  
-
----------------------------
-Partition Resource Summary:
----------------------------
-
-  No Partitions were found in this design.
-
----------------------------
-
-
-=========================================================================
-Timing Report
-
-NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
-      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
-      GENERATED AFTER PLACE-and-ROUTE.
-
-Clock Information:
-------------------
------------------------------------+------------------------+-------+
-Clock Signal                       | Clock buffer(FF name)  | Load  |
------------------------------------+------------------------+-------+
-clk                                | BUFGP                  | 151   |
------------------------------------+------------------------+-------+
-
-Asynchronous Control Signals Information:
-----------------------------------------
-No asynchronous control signals found in this design
-
-Timing Summary:
----------------
-Speed Grade: -3
-
-   Minimum period: 16.028ns (Maximum Frequency: 62.391MHz)
-   Minimum input arrival time before clock: 6.352ns
-   Maximum output required time after clock: 4.419ns
-   Maximum combinational path delay: No path found
-
-Timing Details:
----------------
-All values displayed in nanoseconds (ns)
-
-=========================================================================
-Timing constraint: Default period analysis for Clock 'clk'
-  Clock period: 16.028ns (frequency: 62.391MHz)
-  Total number of paths / destination ports: 2553749862 / 286
--------------------------------------------------------------------------
-Delay:               16.028ns (Levels of Logic = 23)
-  Source:            axi_to_pxconv_data_d_22 (FF)
-  Destination:       pxconv_to_bram_hi_data_0 (FF)
-  Source Clock:      clk rising
-  Destination Clock: clk rising
-
-  Data Path: axi_to_pxconv_data_d_22 to pxconv_to_bram_hi_data_0
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     FDE:C->Q             18   0.447   1.278  axi_to_pxconv_data_d_22 (axi_to_pxconv_data_d_22)
-     LUT6:I3->O            3   0.205   0.879  Madd_n0123_lut<0>41_1 (Madd_n0123_lut<0>411)
-     LUT6:I3->O            2   0.205   0.617  Madd_n0123_cy<0>71_1 (Madd_n0123_cy<0>71)
-     LUT6:I5->O            1   0.205   0.000  BUS_0004_PWR_1_o_div_11/Mmux_a[0]_a[17]_MUX_276_o11511 (BUS_0004_PWR_1_o_div_11/Mmux_a[0]_a[17]_MUX_276_o1151)
-     MUXCY:S->O            1   0.172   0.000  BUS_0004_PWR_1_o_div_11/Madd_a[17]_GND_2_o_add_25_OUT_Madd_cy<7> (BUS_0004_PWR_1_o_div_11/Madd_a[17]_GND_2_o_add_25_OUT_Madd_cy<7>)
-     XORCY:CI->O           5   0.180   1.059  BUS_0004_PWR_1_o_div_11/Madd_a[17]_GND_2_o_add_25_OUT_Madd_xor<8> (BUS_0004_PWR_1_o_div_11/a[17]_GND_2_o_add_25_OUT<8>)
-     LUT6:I1->O            1   0.203   0.000  px_hi_grey<5>21_G (N850)
-     MUXF7:I1->O          32   0.140   1.292  px_hi_grey<5>21 (px_hi_grey<5>2)
-     LUT6:I5->O           14   0.205   0.957  px_hi_grey<5>24 (px_hi_grey<5>)
-     MUXF7:S->O           27   0.148   1.221  px_hi_grey<4>21 (px_hi_grey<4>2)
-     LUT6:I5->O           18   0.205   1.050  BUS_0004_PWR_1_o_div_11/Mmux_a[0]_a[17]_MUX_330_o151 (BUS_0004_PWR_1_o_div_11/a[14]_a[17]_MUX_316_o)
-     LUT5:I4->O           14   0.205   0.958  px_hi_grey<3>23_SW6_SW0 (N804)
-     LUT6:I5->O            1   0.205   0.000  BUS_0004_PWR_1_o_div_11/Madd_a[17]_GND_2_o_add_33_OUT[17:0]_Madd_lut<7> (BUS_0004_PWR_1_o_div_11/Madd_a[17]_GND_2_o_add_33_OUT[17:0]_Madd_lut<7>)
-     MUXCY:S->O            1   0.172   0.000  BUS_0004_PWR_1_o_div_11/Madd_a[17]_GND_2_o_add_33_OUT[17:0]_Madd_cy<7> (BUS_0004_PWR_1_o_div_11/Madd_a[17]_GND_2_o_add_33_OUT[17:0]_Madd_cy<7>)
-     MUXCY:CI->O           1   0.019   0.000  BUS_0004_PWR_1_o_div_11/Madd_a[17]_GND_2_o_add_33_OUT[17:0]_Madd_cy<8> (BUS_0004_PWR_1_o_div_11/Madd_a[17]_GND_2_o_add_33_OUT[17:0]_Madd_cy<8>)
-     MUXCY:CI->O           1   0.019   0.000  BUS_0004_PWR_1_o_div_11/Madd_a[17]_GND_2_o_add_33_OUT[17:0]_Madd_cy<9> (BUS_0004_PWR_1_o_div_11/Madd_a[17]_GND_2_o_add_33_OUT[17:0]_Madd_cy<9>)
-     MUXCY:CI->O           1   0.019   0.000  BUS_0004_PWR_1_o_div_11/Madd_a[17]_GND_2_o_add_33_OUT[17:0]_Madd_cy<10> (BUS_0004_PWR_1_o_div_11/Madd_a[17]_GND_2_o_add_33_OUT[17:0]_Madd_cy<10>)
-     MUXCY:CI->O           1   0.019   0.000  BUS_0004_PWR_1_o_div_11/Madd_a[17]_GND_2_o_add_33_OUT[17:0]_Madd_cy<11> (BUS_0004_PWR_1_o_div_11/Madd_a[17]_GND_2_o_add_33_OUT[17:0]_Madd_cy<11>)
-     MUXCY:CI->O           1   0.019   0.000  BUS_0004_PWR_1_o_div_11/Madd_a[17]_GND_2_o_add_33_OUT[17:0]_Madd_cy<12> (BUS_0004_PWR_1_o_div_11/Madd_a[17]_GND_2_o_add_33_OUT[17:0]_Madd_cy<12>)
-     XORCY:CI->O           2   0.180   0.845  BUS_0004_PWR_1_o_div_11/Madd_a[17]_GND_2_o_add_33_OUT[17:0]_Madd_xor<13> (BUS_0004_PWR_1_o_div_11/a[17]_GND_2_o_add_33_OUT[17:0]<13>)
-     LUT6:I3->O            1   0.205   0.580  px_hi_grey<1>21_SW0_SW1 (N108)
-     LUT6:I5->O            1   0.205   0.580  px_hi_grey<1>21_SW0 (N91)
-     LUT6:I5->O            2   0.205   0.617  px_hi_grey<1>23 (px_hi_grey<1>)
-     LUT6:I5->O            1   0.205   0.000  px_hi_grey<0>25 (px_hi_grey<0>)
-     FDR:D                     0.102          pxconv_to_bram_hi_data_0
-    ----------------------------------------
-    Total                     16.028ns (4.094ns logic, 11.934ns route)
-                                       (25.5% logic, 74.5% route)
-
-=========================================================================
-Timing constraint: Default OFFSET IN BEFORE for Clock 'clk'
-  Total number of paths / destination ports: 241 / 217
--------------------------------------------------------------------------
-Offset:              6.352ns (Levels of Logic = 4)
-  Source:            axi_to_pxconv_valid (PAD)
-  Destination:       px_cnt_2 (FF)
-  Destination Clock: clk rising
-
-  Data Path: axi_to_pxconv_valid to px_cnt_2
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     IBUF:I->O            26   1.222   1.551  axi_to_pxconv_valid_IBUF (axi_to_pxconv_valid_IBUF)
-     LUT6:I1->O            1   0.203   0.684  Mcount_px_cnt_val242 (Mcount_px_cnt_val24)
-     LUT6:I4->O            1   0.203   0.684  Mcount_px_cnt_val244 (Mcount_px_cnt_val243)
-     LUT3:I1->O           24   0.203   1.172  Mcount_px_cnt_val245 (Mcount_px_cnt_val)
-     FDRE:R                    0.430          px_cnt_0
-    ----------------------------------------
-    Total                      6.352ns (2.261ns logic, 4.091ns route)
-                                       (35.6% logic, 64.4% route)
-
-=========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'clk'
-  Total number of paths / destination ports: 85 / 85
--------------------------------------------------------------------------
-Offset:              4.419ns (Levels of Logic = 2)
-  Source:            pxconv_to_axi_mst_length_4 (FF)
-  Destination:       pxconv_to_axi_mst_length<7> (PAD)
-  Source Clock:      clk rising
-
-  Data Path: pxconv_to_axi_mst_length_4 to pxconv_to_axi_mst_length<7>
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     FDR:C->Q              2   0.447   0.616  pxconv_to_axi_mst_length_4 (pxconv_to_axi_mst_length_4)
-     INV:I->O              1   0.206   0.579  pxconv_to_axi_mst_length<4>_inv1_INV_0 (pxconv_to_axi_mst_length_7_OBUF)
-     OBUF:I->O                 2.571          pxconv_to_axi_mst_length_7_OBUF (pxconv_to_axi_mst_length<7>)
-    ----------------------------------------
-    Total                      4.419ns (3.224ns logic, 1.195ns route)
-                                       (73.0% logic, 27.0% route)
-
-=========================================================================
-
-Cross Clock Domains Report:
---------------------------
-
-Clock to Setup on destination clock clk
----------------+---------+---------+---------+---------+
-               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
-Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
----------------+---------+---------+---------+---------+
-clk            |   16.028|         |         |         |
----------------+---------+---------+---------+---------+
-
-=========================================================================
-
-
-Total REAL time to Xst completion: 61.00 secs
-Total CPU time to Xst completion: 60.88 secs
- 
+Analyzing Verilog file "C:\fpga\ISE\pxconv\ipcore_dir\fifo.v" into library work
+Parsing module <fifo>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\proc_common_v3_00_a\hdl\vhdl\proc_common_pkg.vhd" into library proc_common_v3_00_a
+Parsing package <proc_common_pkg>.
+Parsing package body <proc_common_pkg>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\proc_common_v3_00_a\hdl\vhdl\family_support.vhd" into library proc_common_v3_00_a
+Parsing package <family_support>.
+Parsing package body <family_support>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\proc_common_v3_00_a\hdl\vhdl\muxf_struct_f.vhd" into library proc_common_v3_00_a
+Parsing entity <muxf_struct>.
+Parsing architecture <imp> of entity <muxf_struct>.
+Parsing entity <muxf_struct_f>.
+Parsing architecture <imp> of entity <muxf_struct_f>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\proc_common_v3_00_a\hdl\vhdl\dynshreg_f.vhd" into library proc_common_v3_00_a
+Parsing entity <dynshreg_f>.
+Parsing architecture <behavioral> of entity <dynshreg_f>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\proc_common_v3_00_a\hdl\vhdl\cntr_incr_decr_addn_f.vhd" into library proc_common_v3_00_a
+Parsing entity <cntr_incr_decr_addn_f>.
+Parsing architecture <imp> of entity <cntr_incr_decr_addn_f>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\proc_common_v3_00_a\hdl\vhdl\srl_fifo_rbu_f.vhd" into library proc_common_v3_00_a
+Parsing entity <srl_fifo_rbu_f>.
+Parsing architecture <imp> of entity <srl_fifo_rbu_f>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\proc_common_v3_00_a\hdl\vhdl\srl_fifo_f.vhd" into library proc_common_v3_00_a
+Parsing entity <srl_fifo_f>.
+Parsing architecture <imp> of entity <srl_fifo_f>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\proc_common_v3_00_a\hdl\vhdl\pselect_f.vhd" into library proc_common_v3_00_a
+Parsing entity <pselect_f>.
+Parsing architecture <imp> of entity <pselect_f>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\proc_common_v3_00_a\hdl\vhdl\ipif_pkg.vhd" into library proc_common_v3_00_a
+Parsing package <ipif_pkg>.
+Parsing package body <ipif_pkg>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_master_burst_v1_00_a\hdl\vhdl\axi_master_burst_wr_demux.vhd" into library axi_master_burst_v1_00_a
+Parsing entity <axi_master_burst_wr_demux>.
+Parsing architecture <implementation> of entity <axi_master_burst_wr_demux>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_master_burst_v1_00_a\hdl\vhdl\axi_master_burst_strb_gen.vhd" into library axi_master_burst_v1_00_a
+Parsing entity <axi_master_burst_strb_gen>.
+Parsing architecture <implementation> of entity <axi_master_burst_strb_gen>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_master_burst_v1_00_a\hdl\vhdl\axi_master_burst_rdmux.vhd" into library axi_master_burst_v1_00_a
+Parsing entity <axi_master_burst_rdmux>.
+Parsing architecture <implementation> of entity <axi_master_burst_rdmux>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_master_burst_v1_00_a\hdl\vhdl\axi_master_burst_fifo.vhd" into library axi_master_burst_v1_00_a
+Parsing entity <axi_master_burst_fifo>.
+Parsing architecture <imp> of entity <axi_master_burst_fifo>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\proc_common_v3_00_a\hdl\vhdl\counter_f.vhd" into library proc_common_v3_00_a
+Parsing entity <counter_f>.
+Parsing architecture <imp> of entity <counter_f>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_master_burst_v1_00_a\hdl\vhdl\axi_master_burst_wr_status_cntl.vhd" into library axi_master_burst_v1_00_a
+Parsing entity <axi_master_burst_wr_status_cntl>.
+Parsing architecture <implementation> of entity <axi_master_burst_wr_status_cntl>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_master_burst_v1_00_a\hdl\vhdl\axi_master_burst_wrdata_cntl.vhd" into library axi_master_burst_v1_00_a
+Parsing entity <axi_master_burst_wrdata_cntl>.
+Parsing architecture <implementation> of entity <axi_master_burst_wrdata_cntl>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_master_burst_v1_00_a\hdl\vhdl\axi_master_burst_stbs_set.vhd" into library axi_master_burst_v1_00_a
+Parsing entity <axi_master_burst_stbs_set>.
+Parsing architecture <implementation> of entity <axi_master_burst_stbs_set>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_master_burst_v1_00_a\hdl\vhdl\axi_master_burst_skid_buf.vhd" into library axi_master_burst_v1_00_a
+Parsing entity <axi_master_burst_skid_buf>.
+Parsing architecture <implementation> of entity <axi_master_burst_skid_buf>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_master_burst_v1_00_a\hdl\vhdl\axi_master_burst_skid2mm_buf.vhd" into library axi_master_burst_v1_00_a
+Parsing entity <axi_master_burst_skid2mm_buf>.
+Parsing architecture <implementation> of entity <axi_master_burst_skid2mm_buf>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_master_burst_v1_00_a\hdl\vhdl\axi_master_burst_rd_status_cntl.vhd" into library axi_master_burst_v1_00_a
+Parsing entity <axi_master_burst_rd_status_cntl>.
+Parsing architecture <implementation> of entity <axi_master_burst_rd_status_cntl>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_master_burst_v1_00_a\hdl\vhdl\axi_master_burst_rddata_cntl.vhd" into library axi_master_burst_v1_00_a
+Parsing entity <axi_master_burst_rddata_cntl>.
+Parsing architecture <implementation> of entity <axi_master_burst_rddata_cntl>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_master_burst_v1_00_a\hdl\vhdl\axi_master_burst_pcc.vhd" into library axi_master_burst_v1_00_a
+Parsing entity <axi_master_burst_pcc>.
+Parsing architecture <implementation> of entity <axi_master_burst_pcc>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_master_burst_v1_00_a\hdl\vhdl\axi_master_burst_first_stb_offset.vhd" into library axi_master_burst_v1_00_a
+Parsing entity <axi_master_burst_first_stb_offset>.
+Parsing architecture <implementation> of entity <axi_master_burst_first_stb_offset>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_master_burst_v1_00_a\hdl\vhdl\axi_master_burst_addr_cntl.vhd" into library axi_master_burst_v1_00_a
+Parsing entity <axi_master_burst_addr_cntl>.
+Parsing architecture <implementation> of entity <axi_master_burst_addr_cntl>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_lite_ipif_v1_01_a\hdl\vhdl\address_decoder.vhd" into library axi_lite_ipif_v1_01_a
+Parsing entity <address_decoder>.
+Parsing architecture <IMP> of entity <address_decoder>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_master_burst_v1_00_a\hdl\vhdl\axi_master_burst_wr_llink.vhd" into library axi_master_burst_v1_00_a
+Parsing entity <axi_master_burst_wr_llink>.
+Parsing architecture <implementation> of entity <axi_master_burst_wr_llink>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_master_burst_v1_00_a\hdl\vhdl\axi_master_burst_reset.vhd" into library axi_master_burst_v1_00_a
+Parsing entity <axi_master_burst_reset>.
+Parsing architecture <implementation> of entity <axi_master_burst_reset>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_master_burst_v1_00_a\hdl\vhdl\axi_master_burst_rd_wr_cntlr.vhd" into library axi_master_burst_v1_00_a
+Parsing entity <axi_master_burst_rd_wr_cntlr>.
+Parsing architecture <implementation> of entity <axi_master_burst_rd_wr_cntlr>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_master_burst_v1_00_a\hdl\vhdl\axi_master_burst_rd_llink.vhd" into library axi_master_burst_v1_00_a
+Parsing entity <axi_master_burst_rd_llink>.
+Parsing architecture <implementation> of entity <axi_master_burst_rd_llink>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_master_burst_v1_00_a\hdl\vhdl\axi_master_burst_cmd_status.vhd" into library axi_master_burst_v1_00_a
+Parsing entity <axi_master_burst_cmd_status>.
+Parsing architecture <implementation> of entity <axi_master_burst_cmd_status>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_lite_ipif_v1_01_a\hdl\vhdl\slave_attachment.vhd" into library axi_lite_ipif_v1_01_a
+Parsing entity <slave_attachment>.
+Parsing architecture <imp> of entity <slave_attachment>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_master_burst_v1_00_a\hdl\vhdl\axi_master_burst.vhd" into library axi_master_burst_v1_00_a
+Parsing entity <axi_master_burst>.
+Parsing architecture <implementation> of entity <axi_master_burst>.
+Parsing VHDL file "C:\Xilinx\14.2\ISE_DS\EDK\hw\XilinxProcessorIPLib\pcores\axi_lite_ipif_v1_01_a\hdl\vhdl\axi_lite_ipif.vhd" into library axi_lite_ipif_v1_01_a
+Parsing entity <axi_lite_ipif>.
+Parsing architecture <imp> of entity <axi_lite_ipif>.
+Parsing VHDL file "C:\fpga\ISE\pxconv\user_logic.vhd" into library work
+Parsing entity <user_logic>.
+Parsing architecture <IMP> of entity <user_logic>.
+ERROR:HDLCompiler:1314 - "C:\fpga\ISE\pxconv\user_logic.vhd" Line 927: Formal port/generic <bram_addr_width> is not declared in <pxconv>
+ERROR:HDLCompiler:854 - "C:\fpga\ISE\pxconv\ipcore_dir\PXBRAM.v" Line 39: Unit <\PXBRAM\> ignored due to previous errors.
+ERROR:HDLCompiler:69 - "C:\fpga\ISE\pxconv\user_logic.vhd" Line 952: <pxbram> is not declared.
+ERROR:HDLCompiler:461 - "C:\fpga\ISE\pxconv\user_logic.vhd" Line 952: If you are trying to directly instantiate a design entity, please use expanded name.
+ERROR:HDLCompiler:854 - "C:\fpga\ISE\pxconv\user_logic.vhd" Line 199: Unit <imp> ignored due to previous errors.
+VHDL file C:\fpga\ISE\pxconv\user_logic.vhd ignored due to errors
 --> 
 
-Total memory usage is 295160 kilobytes
+Total memory usage is 212476 kilobytes
 
-Number of errors   :    0 (   0 filtered)
-Number of warnings :  105 (   0 filtered)
-Number of infos    :    7 (   0 filtered)
+Number of errors   :    5 (   0 filtered)
+Number of warnings :    0 (   0 filtered)
+Number of infos    :    0 (   0 filtered)
 

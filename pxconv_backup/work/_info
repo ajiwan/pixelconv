@@ -1,0 +1,97 @@
+m255
+K3
+13
+cModel Technology
+Z0 dC:\fpga\ISE\pxconv
+T_opt
+V7V:OR6zNGbn7X_Jd`VMg82
+Z1 04 2 4 work tb fast 0
+Z2 04 4 4 work glbl fast 0
+=1-c0f8da3c2849-533304de-1be-93c
+Z3 o-quiet -auto_acc_if_foreign -work work -L xilinxcorelib_ver -L unisims_ver -L unimacro_ver -L secureip +acc
+n@_opt
+Z4 OL;O;10.1c;51
+T_opt1
+V3Y]C:mM1PE1^EK]LYeYQ13
+R2
+04 9 4 work load_bram fast 0
+04 6 4 work PXBRAM fast 0
+R1
+=1-c0f8da3c2849-532f143e-3e-162c
+R3
+n@_opt1
+R4
+Z5 dC:\fpga\ISE\pxconv
+vglbl
+!s100 eVQ[CMQ^moDGX6<b[kHWP1
+IW9UJ8IoROFALKE?8lbXdT3
+VM[9mS]S:KA1i4VeCMX35[3
+Z6 dC:\fpga\ISE\pixelconv\pxconv
+w1341890449
+8C:/Xilinx/14.2/ISE_DS/ISE//verilog/src/glbl.v
+FC:/Xilinx/14.2/ISE_DS/ISE//verilog/src/glbl.v
+L0 5
+Z7 OL;L;10.1c;51
+r1
+31
+!s90 -reportprogress|300|C:/Xilinx/14.2/ISE_DS/ISE//verilog/src/glbl.v|
+Z8 o-L mtiAvm -L mtiOvm -L mtiUvm -L mtiUPF
+!i10b 1
+!s85 0
+!s108 1395852509.325000
+!s107 C:/Xilinx/14.2/ISE_DS/ISE//verilog/src/glbl.v|
+vload_bram
+I_AhM]O?C^]kXGP3mfa>Lf2
+VN[3nla>_Z[`^dS]8zL1YC2
+R6
+w1395767977
+8pxconv.v
+Fpxconv.v
+L0 1
+R7
+r1
+31
+R8
+!s100 K0IM_mJROolda]_2K>e4V1
+!s108 1395852508.590000
+!s107 pxconv.v|
+!s90 -reportprogress|300|pxconv.v|
+!i10b 1
+!s85 0
+vPXBRAM
+I_6@GjZo0mP`9P1KkEQLN<2
+VJDm:;jZ0?_=od3;f]dcPa1
+R6
+w1395593836
+8ipcore_dir/PXBRAM.v
+Fipcore_dir/PXBRAM.v
+L0 39
+R7
+r1
+31
+R8
+n@p@x@b@r@a@m
+!s100 VQELCAYVRz3QNc]n^?>Wj2
+!s108 1395852508.928000
+!s107 ipcore_dir/PXBRAM.v|
+!s90 -reportprogress|300|ipcore_dir/PXBRAM.v|
+!i10b 1
+!s85 0
+vtb
+If?OJ4Bh2W08JzZ`d:aRJM2
+VV@Xn<HnSRM[I5c1?BH]3a3
+R6
+w1395767767
+8tb.v
+Ftb.v
+L0 25
+R7
+r1
+31
+R8
+!s100 z9MASVgG1bcWH7Vj=f>^[1
+!s108 1395852509.130000
+!s107 tb.v|
+!s90 -reportprogress|300|tb.v|
+!i10b 1
+!s85 0

@@ -2,6 +2,7 @@
 PXBRAM.asy
 PXBRAM.gise
 PXBRAM.ngc
+PXBRAM.sym
 PXBRAM.v
 PXBRAM.veo
 PXBRAM.xco

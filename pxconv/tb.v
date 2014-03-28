@@ -4,15 +4,15 @@
 // Company: 
 // Engineer:
 //
-// Create Date:   01:44:06 03/23/2014
-// Design Name:   load_bram
-// Module Name:   C:/fpga/ISE/pxconv/tb.v
-// Project Name:  pxconv
+// Create Date:   16:28:27 02/17/2014
+// Design Name:   vmodcam
+// Module Name:   C:/Users/tariqmuh/Documents/GitHub/ECE552_CamCtl/vmodcam_tb.v
+// Project Name:  UserLogicWithCamCtlOnly
 // Target Device:  
 // Tool versions:  
 // Description: 
 //
-// Verilog Test Fixture created by ISE for module: load_bram
+// Verilog Test Fixture created by ISE for module: vmodcam
 //
 // Dependencies:
 // 
@@ -25,105 +25,253 @@
 module tb;
 
 	// Inputs
-	reg clk;
-	reg rst;
-	reg [31:0] axi_to_pxconv_data;
-	reg axi_to_pxconv_valid;
-	reg pixel_ack;
+	reg [7:0] SW_I;
+	reg RESET_I;
+	reg CamClk;
+	reg CamClk_180;
+	reg S_AXI_ACLK;
+	reg S_AXI_ARESETN;
+	reg [31:0] S_AXI_AWADDR;
+	reg S_AXI_AWVALID;
+	reg [31:0] S_AXI_WDATA;
+	reg [3:0] S_AXI_WSTRB;
+	reg S_AXI_WVALID;
+	reg S_AXI_BREADY;
+	reg [31:0] S_AXI_ARADDR;
+	reg S_AXI_ARVALID;
+	reg S_AXI_RREADY;
+	reg m_axi_aclk;
+	reg m_axi_aresetn;
+	reg m_axi_arready;
+	reg m_axi_rvalid;
+	reg [31:0] m_axi_rdata;
+	reg [1:0] m_axi_rresp;
+	reg m_axi_rlast;
+	reg m_axi_awready;
+	reg m_axi_wready;
+	reg m_axi_bvalid;
+	reg [1:0] m_axi_bresp;
 
 	// Outputs
-	wire pxconv_to_axi_ready_to_rd;
-	wire [11:0] pxconv_to_axi_mst_length;
-	wire [3:0] pxconv_to_bram_low_we;
-	wire [31:0] pxconv_to_bram_low_data;
-	wire pxconv_to_bram_low_wr_en;
-	wire [31:0] pxconv_to_bram_low_addr;
-	wire [3:0] pxconv_to_bram_hi_we;
-	wire [31:0] pxconv_to_bram_hi_data;
-	wire pxconv_to_bram_hi_wr_en;
-	wire [31:0] pxconv_to_bram_hi_addr;
-	wire wnd_in_bram;
+	wire [7:0] LED_O;
+	wire CAMA_MCLK_O;
+	wire CAMA_RST_O;
+	wire CAMA_PWDN_O;
+	wire CAMX_VDDEN_O;
+	wire CAMB_MCLK_O;
+	wire CAMB_RST_O;
+	wire CAMB_PWDN_O;
+	wire CAMA_CLK;
+	wire S_AXI_ARREADY;
+	wire [31:0] S_AXI_RDATA;
+	wire [1:0] S_AXI_RRESP;
+	wire S_AXI_RVALID;
+	wire S_AXI_WREADY;
+	wire [1:0] S_AXI_BRESP;
+	wire S_AXI_BVALID;
+	wire S_AXI_AWREADY;
+	wire md_error;
+	wire m_axi_arvalid;
+	wire [31:0] m_axi_araddr;
+	wire [7:0] m_axi_arlen;
+	wire [2:0] m_axi_arsize;
+	wire [1:0] m_axi_arburst;
+	wire [2:0] m_axi_arprot;
+	wire [3:0] m_axi_arcache;
+	wire m_axi_rready;
+	wire m_axi_awvalid;
+	wire [31:0] m_axi_awaddr;
+	wire [7:0] m_axi_awlen;
+	wire [2:0] m_axi_awsize;
+	wire [1:0] m_axi_awburst;
+	wire [2:0] m_axi_awprot;
+	wire [3:0] m_axi_awcache;
+	wire m_axi_wvalid;
+	wire [31:0] m_axi_wdata;
+	wire [3:0] m_axi_wstrb;
+	wire m_axi_wlast;
+	wire m_axi_bready;
+
+	// Bidirs
+	wire CAMA_SDA;
+	wire CAMA_SCL;
+	wire [7:0] CAMA_D_I;
+	wire CAMA_PCLK_I;
+	wire CAMA_LV_I;
+	wire CAMA_FV_I;
+	wire CAMB_SDA;
+	wire CAMB_SCL;
+	wire [7:0] CAMB_D_I;
+	wire CAMB_PCLK_I;
+	wire CAMB_LV_I;
+	wire CAMB_FV_I;
+	parameter state1 = 2'b00, state2 = 2'b01, state3 = 2'b10, state4 = 2'b11;
+	reg [1:0] curr_state;	
+	always
+		#5 m_axi_aclk = ~m_axi_aclk;
+	
+	always
+	 #5 S_AXI_ACLK = ~S_AXI_ACLK;
 
 	// Instantiate the Unit Under Test (UUT)
 	load_bram uut (
-		.clk(clk), 
-		.rst(rst), 
-		.axi_to_pxconv_data(axi_to_pxconv_data), 
-		.axi_to_pxconv_valid(axi_to_pxconv_valid), 
-		.pixel_ack(pixel_ack), 
-		.pxconv_to_axi_ready_to_rd(pxconv_to_axi_ready_to_rd), 
-		.pxconv_to_axi_mst_length(pxconv_to_axi_mst_length), 
-		.pxconv_to_bram_low_we(pxconv_to_bram_low_we), 
-		.pxconv_to_bram_low_data(pxconv_to_bram_low_data), 
-		.pxconv_to_bram_low_wr_en(pxconv_to_bram_low_wr_en), 
-		.pxconv_to_bram_low_addr(pxconv_to_bram_low_addr),
-		.pxconv_to_bram_hi_we(pxconv_to_bram_hi_we), 
-		.pxconv_to_bram_hi_data(pxconv_to_bram_hi_data), 
-		.pxconv_to_bram_hi_wr_en(pxconv_to_bram_hi_wr_en), 
-		.pxconv_to_bram_hi_addr(pxconv_to_bram_hi_addr), 		
-		.wnd_in_bram(wnd_in_bram)
+		.S_AXI_ACLK(S_AXI_ACLK), 
+		.S_AXI_ARESETN(S_AXI_ARESETN), 
+		.S_AXI_AWADDR(S_AXI_AWADDR), 
+		.S_AXI_AWVALID(S_AXI_AWVALID), 
+		.S_AXI_WDATA(S_AXI_WDATA), 
+		.S_AXI_WSTRB(S_AXI_WSTRB), 
+		.S_AXI_WVALID(S_AXI_WVALID), 
+		.S_AXI_BREADY(S_AXI_BREADY), 
+		.S_AXI_ARADDR(S_AXI_ARADDR), 
+		.S_AXI_ARVALID(S_AXI_ARVALID), 
+		.S_AXI_RREADY(S_AXI_RREADY), 
+		.S_AXI_ARREADY(S_AXI_ARREADY), 
+		.S_AXI_RDATA(S_AXI_RDATA), 
+		.S_AXI_RRESP(S_AXI_RRESP), 
+		.S_AXI_RVALID(S_AXI_RVALID), 
+		.S_AXI_WREADY(S_AXI_WREADY), 
+		.S_AXI_BRESP(S_AXI_BRESP), 
+		.S_AXI_BVALID(S_AXI_BVALID), 
+		.S_AXI_AWREADY(S_AXI_AWREADY), 
+		.m_axi_aclk(m_axi_aclk), 
+		.m_axi_aresetn(m_axi_aresetn), 
+		.md_error(md_error), 
+		.m_axi_arready(m_axi_arready), 
+		.m_axi_arvalid(m_axi_arvalid), 
+		.m_axi_araddr(m_axi_araddr), 
+		.m_axi_arlen(m_axi_arlen), 
+		.m_axi_arsize(m_axi_arsize), 
+		.m_axi_arburst(m_axi_arburst), 
+		.m_axi_arprot(m_axi_arprot), 
+		.m_axi_arcache(m_axi_arcache), 
+		.m_axi_rready(m_axi_rready), 
+		.m_axi_rvalid(m_axi_rvalid), 
+		.m_axi_rdata(m_axi_rdata), 
+		.m_axi_rresp(m_axi_rresp), 
+		.m_axi_rlast(m_axi_rlast), 
+		.m_axi_awready(m_axi_awready), 
+		.m_axi_awvalid(m_axi_awvalid), 
+		.m_axi_awaddr(m_axi_awaddr), 
+		.m_axi_awlen(m_axi_awlen), 
+		.m_axi_awsize(m_axi_awsize), 
+		.m_axi_awburst(m_axi_awburst), 
+		.m_axi_awprot(m_axi_awprot), 
+		.m_axi_awcache(m_axi_awcache), 
+		.m_axi_wready(m_axi_wready), 
+		.m_axi_wvalid(m_axi_wvalid), 
+		.m_axi_wdata(m_axi_wdata), 
+		.m_axi_wstrb(m_axi_wstrb), 
+		.m_axi_wlast(m_axi_wlast), 
+		.m_axi_bready(m_axi_bready), 
+		.m_axi_bvalid(m_axi_bvalid), 
+		.m_axi_bresp(m_axi_bresp)
 	);
-	
-PXBRAM my_bram_0 (
-  .clka(clk), // input clka
-  .wea(pxconv_to_bram_low_we), // input [3 : 0] wea
-  .ena(pxconv_to_bram_low_wr_en),
-  .addra(pxconv_to_bram_low_addr), // input [31 : 0] addra
-  .dina(pxconv_to_bram_low_data), // input [31 : 0] dina
-  .douta(), // output [31 : 0] douta
-  .clkb(clk), // input clkb
-  .enb(pxconv_to_bram_hi_wr_en),
-  .web(pxconv_to_bram_hi_we), // input [3 : 0] web
-  .addrb(pxconv_to_bram_hi_addr), // input [31 : 0] addrb
-  .dinb(pxconv_to_bram_hi_data), // input [31 : 0] dinb
-  .doutb() // output [31 : 0] doutb
-);
-	
-	always @(posedge clk) begin
-		if(rst) begin
-			axi_to_pxconv_data <= 32'h0000;
-			axi_to_pxconv_valid <= 1'b0;
-		end
-		else begin
-			if(pxconv_to_axi_ready_to_rd) begin
-				axi_to_pxconv_data <=  axi_to_pxconv_data+ 1;
-				axi_to_pxconv_valid <= 1'b1;
-			end
-			else begin
-				axi_to_pxconv_valid <= 1'b0;
-			end
-		end
-	end
-	
-	always@(posedge clk) begin
-		if(rst) begin
-			pixel_ack <= 1'b0;
-		end
-		if(wnd_in_bram) begin
-			pixel_ack = ~pixel_ack;
-		end
-	end
-	
-	always
-		#5 clk = ~clk;
 
 	initial begin
 		// Initialize Inputs
-		clk = 0;
-		rst = 1;
-		axi_to_pxconv_data = 0;
-		axi_to_pxconv_valid = 0;
-		pixel_ack = 0;
+		SW_I = 0;
+		RESET_I = 0;
+		CamClk = 0;
+		CamClk_180 = 0;
+		S_AXI_ACLK = 0;
+		S_AXI_ARESETN = 0;
+		S_AXI_AWADDR = 0;
+		S_AXI_AWVALID = 0;
+		S_AXI_WDATA = 0;
+		S_AXI_WSTRB = 0;
+		S_AXI_WVALID = 0;
+		S_AXI_BREADY = 0;
+		S_AXI_ARADDR = 0;
+		S_AXI_ARVALID = 0;
+		S_AXI_RREADY = 0;
+		m_axi_aclk = 0;
+		m_axi_aresetn = 0;
+		m_axi_arready = 0;
+		m_axi_rvalid = 0;
+		m_axi_rdata = 0;
+		m_axi_rresp = 0;
+		m_axi_rlast = 0;
+		m_axi_awready = 0;
+		m_axi_wready = 0;
+		m_axi_bvalid = 0;
+		m_axi_bresp = 0;
 
 		// Wait 100 ns for global reset to finish
 		#100;
-		rst = 0;
-        
+      m_axi_aresetn  = 1;
+		m_axi_awready = 1;
+		S_AXI_ARESETN = 1;
+		#50
+		m_axi_aresetn  = 0;
+		S_AXI_ARESETN = 0;
+		#50
+		m_axi_aresetn  = 1;
+		S_AXI_ARESETN = 1;
 		// Add stimulus here
-		#22665;
+    #100000;
+	
+	 
+	
+		
 
-		#1000;
 	end
-      
+	
+	reg [31:0] counter;
+
+	always @(posedge m_axi_aclk)
+	begin
+		case (curr_state)
+			state1:
+			begin
+				m_axi_arready <= 1;
+				m_axi_rresp[1:0] <= 2'b00;
+				counter <= 32'b0;
+				m_axi_rlast <= 1;
+
+				
+				if (m_axi_rready == 1) begin
+					curr_state <= state2;
+					m_axi_rdata <= m_axi_rdata + 1;
+					m_axi_rvalid <= 1;
+					counter <= counter + 1;
+				end
+				else begin
+					m_axi_rvalid <= 0;
+				end
+			end
+			state2:
+			begin
+				m_axi_arready <= 0;
+				m_axi_rdata <= m_axi_rdata + 1;
+				curr_state = state3;
+				counter <= counter + 1;
+			end
+			state3:
+			begin
+				m_axi_arready <= 1;
+				m_axi_rdata <= m_axi_rdata + 1;
+				counter <= counter + 1;
+				if (counter == 32'd15) begin
+					curr_state = state4;
+					
+				end
+			end
+			state4:
+			begin
+				m_axi_rlast <= 1;
+				m_axi_rvalid <= 0;
+				counter <= 0;
+				//if (m_axi_wvalid == 0) begin 
+					curr_state = state1;
+			//	end
+			end
+			default: 
+			begin
+			  curr_state = state1;
+		  end
+		endcase
+	end
+	
 endmodule
 
