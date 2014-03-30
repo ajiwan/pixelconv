@@ -932,7 +932,7 @@ begin
 	 axi_to_pxconv_valid => axi_to_pxconv_valid,
 	 pixel_ack => '0',
 	 pxconv_to_axi_ready_to_rd => pxconv_to_axi_ready_to_rd,
-	 pxconv_to_axi_mst_length => open, --pxconv_mst_length,
+	 pxconv_to_axi_mst_length => pxconv_mst_length,
 	 pxconv_to_bram_we => pxconv_to_bram_we,
 	 pxconv_to_bram_data => pxconv_to_bram_data,
 	 pxconv_to_bram_wr_en => pxconv_to_bram_wr_en,
@@ -946,7 +946,7 @@ begin
 	);
 	
 	--TB ONLY
-	pxconv_mst_length <= X"040";
+	--pxconv_mst_length <= X"040";
 	
 	--assign enb = (bram_busy) ? pxconv_to_bram_hi_wr_en : khurram_wr_en
 	
