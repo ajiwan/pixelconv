@@ -179,8 +179,10 @@ entity load_bram is
     C_NATIVE_DATA_WIDTH            : integer              := 32;
     C_LENGTH_WIDTH                 : integer              := 12;
     C_ADDR_PIPE_DEPTH              : integer              := 1;
-	 	 START_ADDR							  : std_logic_vector					 := X"A0000000";
-	 END_ADDR							  : std_logic_vector					 := X"A03A97C0";
+	 START_ADDR_REF							  : std_logic_vector					 := X"A0000000";
+	 END_ADDR_REF							  : std_logic_vector					 := X"A03A97C0";
+	 START_ADDR_SEARCH							  : std_logic_vector					 := X"A8000000";
+	 END_ADDR_SEARCH							  : std_logic_vector					 := X"A83A97C0";
 	 BRAM_ADDR_WIDTH					  : integer					 := 32
     -- DO NOT EDIT ABOVE THIS LINE ---------------------
   );
@@ -523,8 +525,10 @@ begin
       C_MST_AWIDTH                   => USER_MST_AWIDTH,
       C_NUM_REG                      => USER_NUM_REG,
       C_SLV_DWIDTH                   => USER_SLV_DWIDTH,
-	 START_ADDR							   => START_ADDR,
-	 END_ADDR							  => END_ADDR,
+	 START_ADDR_REF							   => START_ADDR_REF,
+	 END_ADDR_REF							  => END_ADDR_REF,
+	 START_ADDR_SEARCH						   => START_ADDR_SEARCH,
+	 END_ADDR_SEARCH							  => END_ADDR_SEARCH,
 	 BRAM_ADDR_WIDTH					  => BRAM_ADDR_WIDTH
     )
     port map

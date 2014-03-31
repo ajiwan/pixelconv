@@ -128,8 +128,10 @@ entity user_logic is
     C_MST_AWIDTH                   : integer              := 32;
     C_NUM_REG                      : integer              := 9;
     C_SLV_DWIDTH                   : integer              := 32;
-	 START_ADDR							  : std_logic_vector					 := X"A0000000";
-	 END_ADDR							  : std_logic_vector					 := X"A03A97C0";
+	 START_ADDR_REF							  : std_logic_vector					 := X"A0000000";
+	 END_ADDR_REF							  : std_logic_vector					 := X"A03A97C0";
+	 START_ADDR_SEARCH					: std_logic_vector 					:= X"A8000000";
+	 END_ADDR_SEARCH						: std_logic_vector					:= X"A83A97C0";
 	 BRAM_ADDR_WIDTH					  : integer					 := 32
     -- DO NOT EDIT ABOVE THIS LINE ---------------------
   );
@@ -276,7 +278,7 @@ architecture IMP of user_logic is
   signal fifo_empty							 : std_logic;
   type FIFO_SM_STATE is (READ_FIFO_IDLE, SEND_LOW_PIXEL, SEND_HI_PIXEL);
   signal read_fifo_state				    : FIFO_SM_STATE;
-  type CAMA_SM_TYPE is (CAM_IDLE, CAMA_INIT, CAMA_GO);
+  type CAMA_SM_TYPE is (CAM_IDLE, CAMA_INIT, CAMA_GO, CAMB_INIT, CAMB_GO);
   signal cama_sm_state : CAMA_SM_TYPE;
   signal axi_to_pxconv_data 				 : std_logic_vector(15 downto 0);
   signal pxconv_to_axi_ready_to_rd		 : std_logic;
@@ -288,6 +290,25 @@ architecture IMP of user_logic is
   signal pa_wr_addr							 : std_logic_vector(31 downto 0);
   signal wnd_in_bram							 : std_logic;
   signal pxconv_mst_length					 : std_logic_vector(C_LENGTH_WIDTH-1 downto 0);
+ 
+  signal axi_to_pxconv_valid_search				 : std_logic;
+  signal fifo_data_out_search						 : std_logic_vector(31 downto 0);
+  signal fifo_empty_search							 : std_logic;
+  signal read_fifo_state_search				    : FIFO_SM_STATE;
+  signal axi_to_pxconv_data_search 				 : std_logic_vector(15 downto 0);
+  signal pxconv_to_axi_ready_to_rd_search		 : std_logic;
+  signal pxconv_to_bram_we_search					 : std_logic_vector(3 downto 0);
+  signal pxconv_to_bram_data_search				 : std_logic_vector(31 downto 0);
+  signal pxconv_to_bram_wr_en_search				 : std_logic;
+  signal pxconv_to_bram_addr_search				 : std_logic_vector(31 downto 0);
+  signal bram_busy_search							 : std_logic;
+  signal pb_wr_addr							 : std_logic_vector(31 downto 0);
+  signal wnd_in_bram_search							 : std_logic;
+  signal pxconv_mst_length_search					 : std_logic_vector(C_LENGTH_WIDTH-1 downto 0);
+  signal fifo_ref_sel : std_logic;
+  signal fifo_search_sel : std_logic;
+  signal fifo_search_wr_en : std_logic;
+  signal fifo_ref_wr_en : std_logic;
 
 attribute SIGIS of Bus2IP_Reset   : signal is "RST";
 begin
@@ -895,15 +916,18 @@ begin
   mst_fifo_valid_write_xfer <= not(Bus2IP_MstRd_src_rdy_n) and mst_llrd_sm_dst_rdy;
   mst_fifo_valid_read_xfer  <= not(Bus2IP_MstWr_dst_rdy_n) and mst_llwr_sm_src_rdy;
   Bus2IP_Reset   <= not (Bus2IP_Resetn);
+  
+  fifo_ref_wr_en <= mst_fifo_valid_write_xfer and fifo_ref_sel;
+  fifo_search_wr_en <= mst_fifo_valid_write_xfer and fifo_search_sel;
 
-  DATA_CAPTURE_FIFO_I : entity work.fifo
+  fifo_ref : entity work.fifo
 
     port map
     (
       wr_clk        => Bus2IP_Clk,
 		rd_clk 		=> Bus2IP_Clk,
       rst      => Bus2IP_Reset,
-      wr_en => mst_fifo_valid_write_xfer,
+      wr_en => fifo_ref_wr_en,
       din    => Bus2IP_MstRd_d,
       rd_en  => axi_to_pxconv_valid,
       dout   => fifo_data_out,
@@ -911,6 +935,20 @@ begin
       empty => fifo_empty
     );
 	 
+ fifo_search : entity work.fifo
+
+    port map
+    (
+      wr_clk        => Bus2IP_Clk,
+		rd_clk 		=> Bus2IP_Clk,
+      rst      => Bus2IP_Reset,
+      wr_en => fifo_search_wr_en,
+      din    => Bus2IP_MstRd_d,
+      rd_en  => axi_to_pxconv_valid_search,
+      dout   => fifo_data_out_search,
+      full  => open,
+      empty => fifo_empty_search
+    );
 
   ------------------------------------------
   -- Example code to drive IP to Bus signals
@@ -923,7 +961,7 @@ begin
   IP2Bus_RdAck <= slv_read_ack or mst_read_ack;
   IP2Bus_Error <= '0';
 
-  pxconv_inst : entity work.pxconv 
+  pxconv_inst_ref : entity work.pxconv 
 	port map 
 	(
     clk => Bus2IP_Clk,
@@ -937,20 +975,29 @@ begin
 	 pxconv_to_bram_data => pxconv_to_bram_data,
 	 pxconv_to_bram_wr_en => pxconv_to_bram_wr_en,
 	 pxconv_to_bram_addr => pxconv_to_bram_addr,
---	 pxconv_to_bram_hi_we => pxconv_to_bram_hi_we,
---	 pxconv_to_bram_hi_data => pxconv_to_bram_hi_data,
---	 pxconv_to_bram_hi_wr_en => pxconv_to_bram_hi_wr_en,
---	 pxconv_to_bram_hi_addr => pxconv_to_bram_hi_addr,
 	 busy => bram_busy,
 	 wnd_in_bram => wnd_in_bram
 	);
 	
-	--TB ONLY
-	--pxconv_mst_length <= X"040";
+pxconv_inst_search : entity work.pxconv 
+	port map 
+	(
+    clk => Bus2IP_Clk,
+    rst => Bus2IP_Reset,
+	 axi_to_pxconv_data => axi_to_pxconv_data_search,
+	 axi_to_pxconv_valid => axi_to_pxconv_valid_search,
+	 pixel_ack => '0',
+	 pxconv_to_axi_ready_to_rd => pxconv_to_axi_ready_to_rd_search,
+	 pxconv_to_axi_mst_length => pxconv_mst_length_search,
+	 pxconv_to_bram_we => pxconv_to_bram_we_search,
+	 pxconv_to_bram_data => pxconv_to_bram_data_search,
+	 pxconv_to_bram_wr_en => pxconv_to_bram_wr_en_search,
+	 pxconv_to_bram_addr => pxconv_to_bram_addr_search,
+	 busy => bram_busy_search,
+	 wnd_in_bram => wnd_in_bram_search
+	);
 	
-	--assign enb = (bram_busy) ? pxconv_to_bram_hi_wr_en : khurram_wr_en
-	
- my_bram : entity work.PXBRAM
+ bram_ref : entity work.PXBRAM
 	port map
 	(
   clka => Bus2IP_Clk, -- input clka
@@ -958,6 +1005,23 @@ begin
   ena => pxconv_to_bram_wr_en,
   addra => pxconv_to_bram_addr(BRAM_ADDR_WIDTH-1 downto 0), -- input [31 : 0] addra
   dina => pxconv_to_bram_data, -- input [31 : 0] dina
+  douta => open, -- output [31 : 0] douta
+  clkb => Bus2IP_Clk, -- input clkb
+  enb => '0', --pxconv_to_bram_hi_wr_en,
+  web => X"0", -- input [3 : 0] web
+  addrb => X"00000000", -- input [31 : 0] addrb
+  dinb => X"00000000", -- input [31 : 0] dinb
+  doutb => open -- output [31 : 0] doutb
+);
+
+ bram_search : entity work.PXBRAM
+	port map
+	(
+  clka => Bus2IP_Clk, -- input clka
+  wea => pxconv_to_bram_we_search, -- input [3 : 0] wea
+  ena => pxconv_to_bram_wr_en_search,
+  addra => pxconv_to_bram_addr_search(BRAM_ADDR_WIDTH-1 downto 0), -- input [31 : 0] addra
+  dina => pxconv_to_bram_data_search, -- input [31 : 0] dina
   douta => open, -- output [31 : 0] douta
   clkb => Bus2IP_Clk, -- input clkb
   enb => '0', --pxconv_to_bram_hi_wr_en,
@@ -1007,13 +1071,57 @@ process(Bus2IP_Clk) begin
 		
 		end if;
 	end process;
+	
+	process(Bus2IP_Clk) begin
+		if Rising_Edge(Bus2IP_Clk) then
+			if ( Bus2IP_Resetn = '0' ) then
+					axi_to_pxconv_valid_search <= '0';
+			else
+				
+				case read_fifo_state_search is
+						
+					when READ_FIFO_IDLE => 
+							
+						if(fifo_empty_search = '0') then
+								read_fifo_state_search <= SEND_LOW_PIXEL;
+								axi_to_pxconv_valid_search <= '1';
+								axi_to_pxconv_data_search <= fifo_data_out_search(15 downto 0); 
+						end if;
+						
+					when SEND_LOW_PIXEL =>
+							axi_to_pxconv_valid_search <= '1';
+							axi_to_pxconv_data_search <= fifo_data_out_search(31 downto 16); 
+							read_fifo_state_search <= SEND_HI_PIXEL;
+						
+					when SEND_HI_PIXEL =>
+						--	axi_to_pxconv_data <= fifo_data_out(31 downto 16); 
+
+						if(fifo_empty_search = '0') then
+							read_fifo_state_search <= SEND_LOW_PIXEL;
+							axi_to_pxconv_valid_search <= '1';
+							axi_to_pxconv_data_search <= fifo_data_out_search(15 downto 0); 
+						else							
+							read_fifo_state_search <= READ_FIFO_IDLE;
+							axi_to_pxconv_valid_search <= '0';
+						end if;
+						
+					when others => 
+						read_fifo_state_search <= READ_FIFO_IDLE;
+				end case;
+			end if;
+		
+		end if;
+	end process;
 
 	process(Bus2IP_Clk) begin
 		if Rising_Edge(Bus2IP_Clk) then
 			if ( Bus2IP_Resetn = '0' ) then
 					cama_sm_state <= CAM_IDLE;
 					mst_cntl_rd_req <= '0';
-					pa_wr_addr <= START_ADDR;
+					pa_wr_addr <= START_ADDR_REF;
+					pb_wr_addr <= START_ADDR_SEARCH;
+					fifo_ref_sel <= '0';
+					fifo_search_sel <= '0';
 			else
 				
 				case cama_sm_state is
@@ -1023,6 +1131,11 @@ process(Bus2IP_Clk) begin
 						if(pxconv_to_axi_ready_to_rd = '1') then
 								cama_sm_state <= CAMA_INIT;
 								mst_cntl_rd_req <= '1';
+								fifo_ref_sel <= '1';
+						elsif(pxconv_to_axi_ready_to_rd_search = '1') then
+								cama_sm_state <= CAMB_INIT;
+								mst_cntl_rd_req <= '1';
+								fifo_search_sel <= '1';
 						end if;
 						
 					when CAMA_INIT =>
@@ -1037,10 +1150,29 @@ process(Bus2IP_Clk) begin
 						
 						if(Bus2IP_Mst_Cmplt = '1') then
 							cama_sm_state <= CAM_IDLE;
-							if (pa_wr_addr = END_ADDR) then
-								pa_wr_addr <= START_ADDR;
+							if (pa_wr_addr = END_ADDR_REF) then
+								pa_wr_addr <= START_ADDR_REF;
 							else
 								pa_wr_addr <= pa_wr_addr + (128*4);
+							end if;
+						end if;
+						
+					when CAMB_INIT =>
+						if(Bus2IP_Mst_CmdAck = '1') then
+							cama_sm_state <= CAMB_GO;
+							mst_cntl_rd_req <= '0';
+	
+							
+						end if;
+						
+					when CAMB_GO =>
+						
+						if(Bus2IP_Mst_Cmplt = '1') then
+							cama_sm_state <= CAM_IDLE;
+							if (pb_wr_addr = END_ADDR_SEARCH) then
+								pb_wr_addr <= START_ADDR_SEARCH;
+							else
+								pb_wr_addr <= pb_wr_addr + (128*4);
 							end if;
 						end if;
 						

@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <report-views version="2.0" >
  <header>
-  <DateModified>2014-03-27T19:46:08</DateModified>
+  <DateModified>2014-03-31T12:57:23</DateModified>
   <ModuleName>load_bram</ModuleName>
-  <SummaryTimeStamp>2014-03-27T19:16:43</SummaryTimeStamp>
+  <SummaryTimeStamp>2014-03-31T12:37:29</SummaryTimeStamp>
   <SavedFilePath>C:/fpga/ISE/pxconv/iseconfig/load_bram.xreport</SavedFilePath>
   <ImplementationReportsDirectory>C:/fpga/ISE/pxconv\</ImplementationReportsDirectory>
   <DateInitialized>2014-03-25T15:41:48</DateInitialized>

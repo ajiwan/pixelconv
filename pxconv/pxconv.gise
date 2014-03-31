@@ -52,9 +52,13 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1395972821" xil_pn:in_ck="-5420289881256504315" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1395972820">
+    <transform xil_pn:end_ts="1396284048" xil_pn:in_ck="-5420289881256504315" xil_pn:name="TRAN_copyAbstractToPostAbstractSimulation" xil_pn:start_ts="1396284048">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="C:/Xilinx/14.2/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/hdl/vhdl/address_decoder.vhd"/>
       <outfile xil_pn:name="C:/Xilinx/14.2/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/hdl/vhdl/axi_lite_ipif.vhd"/>
       <outfile xil_pn:name="C:/Xilinx/14.2/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/hdl/vhdl/slave_attachment.vhd"/>
@@ -161,9 +165,14 @@
       <outfile xil_pn:name="ipcore_dir/fifo.ngc"/>
       <outfile xil_pn:name="ipcore_dir/fifo.v"/>
     </transform>
-    <transform xil_pn:end_ts="1395972821" xil_pn:in_ck="6151246493439092569" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1395972821">
+    <transform xil_pn:end_ts="1396284049" xil_pn:in_ck="-5420289881256504315" xil_pn:name="TRAN_copyPostAbstractToPreSimulation" xil_pn:start_ts="1396284048">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="C:/Xilinx/14.2/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/hdl/vhdl/address_decoder.vhd"/>
       <outfile xil_pn:name="C:/Xilinx/14.2/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/hdl/vhdl/axi_lite_ipif.vhd"/>
       <outfile xil_pn:name="C:/Xilinx/14.2/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/axi_lite_ipif_v1_01_a/hdl/vhdl/slave_attachment.vhd"/>
@@ -249,16 +258,19 @@
       <outfile xil_pn:name="C:/Xilinx/14.2/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/sync_fifo_fg.vhd"/>
       <outfile xil_pn:name="C:/Xilinx/14.2/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/valid_be.vhd"/>
       <outfile xil_pn:name="C:/Xilinx/14.2/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/proc_common_v3_00_a/hdl/vhdl/xor_f.vhd"/>
-      <outfile xil_pn:name="ipcore_dir/PXBRAM.v"/>
-      <outfile xil_pn:name="ipcore_dir/fifo.v"/>
       <outfile xil_pn:name="load_bram.vhd"/>
       <outfile xil_pn:name="pxconv.v"/>
       <outfile xil_pn:name="tb.v"/>
       <outfile xil_pn:name="user_logic.vhd"/>
     </transform>
-    <transform xil_pn:end_ts="1395972825" xil_pn:in_ck="6151246493439092569" xil_pn:name="TRAN_MSimulateBehavioralModel" xil_pn:prop_ck="-3955124671757855930" xil_pn:start_ts="1395972821">
+    <transform xil_pn:end_ts="1396284056" xil_pn:in_ck="6151246493439092569" xil_pn:name="TRAN_MSimulateBehavioralModel" xil_pn:prop_ck="-3955124671757855930" xil_pn:start_ts="1396284049">
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
+      <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputChanged"/>
       <outfile xil_pn:name="tb.fdo"/>
       <outfile xil_pn:name="vsim.wlf"/>
       <outfile xil_pn:name="work"/>
@@ -291,16 +303,16 @@
       <status xil_pn:value="SuccessfullyRun"/>
       <status xil_pn:value="ReadyToRun"/>
     </transform>
-    <transform xil_pn:end_ts="1395964018" xil_pn:in_ck="-5774321554888356577" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="2291877277456561173" xil_pn:start_ts="1395963981">
-      <status xil_pn:value="FailedRun"/>
+    <transform xil_pn:end_ts="1396285164" xil_pn:in_ck="-5774321554888356577" xil_pn:name="TRANEXT_xstsynthesize_spartan6" xil_pn:prop_ck="2291877277456561173" xil_pn:start_ts="1396285047">
+      <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
-      <status xil_pn:value="OutOfDateForInputs"/>
-      <status xil_pn:value="InputChanged"/>
       <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
       <outfile xil_pn:name="load_bram.lso"/>
       <outfile xil_pn:name="load_bram.ngc"/>
       <outfile xil_pn:name="load_bram.ngr"/>
       <outfile xil_pn:name="load_bram.prj"/>
+      <outfile xil_pn:name="load_bram.stx"/>
       <outfile xil_pn:name="load_bram.syr"/>
       <outfile xil_pn:name="load_bram.xst"/>
       <outfile xil_pn:name="load_bram_xst.xrpt"/>

@@ -22,3 +22,8 @@ xst -intstyle ise -ifn "C:/fpga/ISE/pxconv/load_bram.xst" -ofn "C:/fpga/ISE/pxco
 xst -intstyle ise -ifn "C:/fpga/ISE/pxconv/load_bram.xst" -ofn "C:/fpga/ISE/pxconv/load_bram.syr" 
 xst -intstyle ise -ifn "C:/fpga/ISE/pxconv/load_bram.xst" -ofn "C:/fpga/ISE/pxconv/load_bram.syr" 
 xst -intstyle ise -ifn "C:/fpga/ISE/pxconv/load_bram.xst" -ofn "C:/fpga/ISE/pxconv/load_bram.syr" 
+xst -intstyle ise -ifn "C:/fpga/ISE/pxconv/load_bram.xst" -ofn "C:/fpga/ISE/pxconv/load_bram.syr" 
+xst -intstyle ise -ifn "C:/fpga/ISE/pxconv/load_bram.xst" -ofn "C:/fpga/ISE/pxconv/load_bram.syr" 
+xst -intstyle ise -ifn "C:/fpga/ISE/pxconv/load_bram.xst" -ofn "C:/fpga/ISE/pxconv/load_bram.syr" 
+xst -intstyle ise -ifn "C:/fpga/ISE/pxconv/load_bram.xst" -ofn "C:/fpga/ISE/pxconv/load_bram.syr" 
+xst -intstyle ise -ifn "C:/fpga/ISE/pxconv/load_bram.xst" -ofn "C:/fpga/ISE/pxconv/load_bram.syr" 
