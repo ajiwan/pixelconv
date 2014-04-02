@@ -970,7 +970,7 @@ begin
 	 axi_to_pxconv_valid => axi_to_pxconv_valid,
 	 pixel_ack => '0',
 	 pxconv_to_axi_ready_to_rd => pxconv_to_axi_ready_to_rd,
-	 pxconv_to_axi_mst_length => pxconv_mst_length,
+	 pxconv_to_axi_mst_length => open,
 	 pxconv_to_bram_we => pxconv_to_bram_we,
 	 pxconv_to_bram_data => pxconv_to_bram_data,
 	 pxconv_to_bram_wr_en => pxconv_to_bram_wr_en,
@@ -978,6 +978,9 @@ begin
 	 busy => bram_busy,
 	 wnd_in_bram => wnd_in_bram
 	);
+	
+	pxconv_mst_length_search <= X"010";
+	pxconv_mst_length <= X"010";
 	
 pxconv_inst_search : entity work.pxconv 
 	port map 
@@ -988,7 +991,7 @@ pxconv_inst_search : entity work.pxconv
 	 axi_to_pxconv_valid => axi_to_pxconv_valid_search,
 	 pixel_ack => '0',
 	 pxconv_to_axi_ready_to_rd => pxconv_to_axi_ready_to_rd_search,
-	 pxconv_to_axi_mst_length => pxconv_mst_length_search,
+	 pxconv_to_axi_mst_length => open,
 	 pxconv_to_bram_we => pxconv_to_bram_we_search,
 	 pxconv_to_bram_data => pxconv_to_bram_data_search,
 	 pxconv_to_bram_wr_en => pxconv_to_bram_wr_en_search,
@@ -1183,5 +1186,7 @@ process(Bus2IP_Clk) begin
 		
 		end if;
 	end process;
+	
+	mst_ip2bus_addr <= pa_wr_addr when fifo_ref_sel = '1' else pb_wr_addr;
 
 end IMP;

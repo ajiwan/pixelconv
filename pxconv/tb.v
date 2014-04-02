@@ -25,10 +25,6 @@
 module tb;
 
 	// Inputs
-	reg [7:0] SW_I;
-	reg RESET_I;
-	reg CamClk;
-	reg CamClk_180;
 	reg S_AXI_ACLK;
 	reg S_AXI_ARESETN;
 	reg [31:0] S_AXI_AWADDR;
@@ -53,15 +49,6 @@ module tb;
 	reg [1:0] m_axi_bresp;
 
 	// Outputs
-	wire [7:0] LED_O;
-	wire CAMA_MCLK_O;
-	wire CAMA_RST_O;
-	wire CAMA_PWDN_O;
-	wire CAMX_VDDEN_O;
-	wire CAMB_MCLK_O;
-	wire CAMB_RST_O;
-	wire CAMB_PWDN_O;
-	wire CAMA_CLK;
 	wire S_AXI_ARREADY;
 	wire [31:0] S_AXI_RDATA;
 	wire [1:0] S_AXI_RRESP;
@@ -93,18 +80,6 @@ module tb;
 	wire m_axi_bready;
 
 	// Bidirs
-	wire CAMA_SDA;
-	wire CAMA_SCL;
-	wire [7:0] CAMA_D_I;
-	wire CAMA_PCLK_I;
-	wire CAMA_LV_I;
-	wire CAMA_FV_I;
-	wire CAMB_SDA;
-	wire CAMB_SCL;
-	wire [7:0] CAMB_D_I;
-	wire CAMB_PCLK_I;
-	wire CAMB_LV_I;
-	wire CAMB_FV_I;
 	parameter state1 = 2'b00, state2 = 2'b01, state3 = 2'b10, state4 = 2'b11;
 	reg [1:0] curr_state;	
 	always
@@ -170,10 +145,6 @@ module tb;
 
 	initial begin
 		// Initialize Inputs
-		SW_I = 0;
-		RESET_I = 0;
-		CamClk = 0;
-		CamClk_180 = 0;
 		S_AXI_ACLK = 0;
 		S_AXI_ARESETN = 0;
 		S_AXI_AWADDR = 0;
@@ -218,50 +189,55 @@ module tb;
 	end
 	
 	reg [31:0] counter;
-
-	always @(posedge m_axi_aclk)
+	
+		always @(posedge m_axi_aclk)
 	begin
 		case (curr_state)
 			state1:
 			begin
-				m_axi_arready <= 1;
-				m_axi_rresp[1:0] <= 2'b00;
-				counter <= 32'b0;
-				m_axi_rlast <= 1;
 
 				
-				if (m_axi_rready == 1) begin
+				if (m_axi_arvalid == 1) begin
 					curr_state <= state2;
-					m_axi_rdata <= m_axi_rdata + 1;
-					m_axi_rvalid <= 1;
-					counter <= counter + 1;
+					
+					//m_axi_arready <= 0;
+					
+					
 				end
-				else begin
+				
 					m_axi_rvalid <= 0;
-				end
+					m_axi_arready <= 1;
+					m_axi_rresp[1:0] <= 2'b00;
+					counter <= 32'b0;
+					m_axi_rlast <= 0;
+			
 			end
 			state2:
 			begin
 				m_axi_arready <= 0;
-				m_axi_rdata <= m_axi_rdata + 1;
-				curr_state = state3;
-				counter <= counter + 1;
+				m_axi_rvalid <= 1;
+				//m_axi_rdata <= m_axi_rdata + 1;
+				curr_state <= state3;
+
 			end
+			
 			state3:
 			begin
 				m_axi_arready <= 1;
 				m_axi_rdata <= m_axi_rdata + 1;
 				counter <= counter + 1;
-				if (counter == 32'd15) begin
+				if (counter == 32'd2) begin
+				//if(m_axi_rready == 0) begin
 					curr_state = state4;
-					
+					m_axi_rlast <= 1;
+				//	m_axi_rvalid <= 0;
 				end
 			end
 			state4:
 			begin
-				m_axi_rlast <= 1;
-				m_axi_rvalid <= 0;
+
 				counter <= 0;
+				m_axi_rvalid <= 0;
 				//if (m_axi_wvalid == 0) begin 
 					curr_state = state1;
 			//	end
